@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 from subprocess import check_output
 
 
@@ -13,7 +14,7 @@ def __query(domain, limit=100):
     :returns: str -- Console output from whois call.
     :rtype: str
     """
-    s = check_output(['./whois.sh', '--limit {} {}'.format(limit, domain)], universal_newlines=True)
+    s = check_output([os.path.dirname(os.path.realpath(__file__)) + '/whois.sh', '--limit {} {}'.format(limit, domain)], universal_newlines=True)
     return s
 
 
